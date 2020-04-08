@@ -1,4 +1,4 @@
-package org.gps.tcp;
+package org.tcp.client;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,11 +12,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TbTcpClientApplication {
-	public static final Logger logger = LoggerFactory.getLogger(TbTcpClientApplication.class);
+public class TcpClientApplication {
+	public static final Logger logger = LoggerFactory.getLogger(TcpClientApplication.class);
 	
 	public static void main(String[] args) {
-		SpringApplication.run(TbTcpClientApplication.class, args);
+		SpringApplication.run(TcpClientApplication.class, args);
 		String SOCKET_IP = args[0];
 		int SOCKET_PORT = Integer.parseInt(args[1]);
 		logger.info("Client application  started");
@@ -40,15 +40,13 @@ public class TbTcpClientApplication {
 					String response = socketBR.readLine();
 					logger.info(response);
 				} catch (Exception e) {
-					e.printStackTrace();
-					logger.info("Read line exception : " + e);
+					logger.error("Exception - " + e);
 					break;
 				}
 			}
 			socket.close();
 		} catch (IOException e) {
-			e.printStackTrace();
-			logger.info("Socket exception : " + e);
+			logger.error("IOException - ", e);
 		}
 		
 	}
