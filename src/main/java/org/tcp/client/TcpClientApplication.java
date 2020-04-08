@@ -47,8 +47,7 @@ public class TcpClientApplication {
 			socket.close();
 		} catch (IOException e) {
 			logger.error("IOException - ", e);
-		}
-		
+		}	
 	}
 
 }
